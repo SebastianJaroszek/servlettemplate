@@ -1,5 +1,6 @@
 package pl.sebastian;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,7 @@ public class FormServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -26,13 +27,17 @@ public class FormServlet extends HttpServlet {
         String sex = req.getParameter("sex");
         String hardware = req.getParameter("device");
 
-        if (acceptTerms != null && sex != null) {
-            resp.setContentType("text/html");
-            resp.setCharacterEncoding("utf-8");
-            PrintWriter out = resp.getWriter();
-            out.println("<h1>Welcome " + username + "</h1>");
-            out.println("Your sex: " + sex + "<br>Your gaming platform: " + hardware);
+        if (acceptTerms == null || sex == null) {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("form.html");
+            requestDispatcher.forward(req, resp);
         }
+
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("utf-8");
+        PrintWriter out = resp.getWriter();
+        out.println("<h1>Welcome " + username + "</h1>");
+        out.println("Your sex: " + sex + "<br>Your gaming platform: " + hardware);
+
     }
 
 }
