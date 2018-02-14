@@ -24,8 +24,12 @@ public class FormServlet extends HttpServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String acceptTerms = req.getParameter("accept");
-        String sex = req.getParameter("sex");
+        String sexParameter = req.getParameter("sex");
         String hardware = req.getParameter("device");
+
+        boolean accepted = "on".equals(acceptTerms);
+
+        Sex sex = Sex.valueOf(sexParameter.toUpperCase());
 
         if (acceptTerms == null || sex == null) {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("form.html");
