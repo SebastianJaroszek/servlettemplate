@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Formularz</title>
+</head>
+<body>
+zrobić formularz zawierający:
+- pole username normalne
+- pole password - typu password (niewidoczne)
+- checkbox - akceptacja regulaminu
+- radio button - płeć
+- selectbox - rodzaj sprzętu: pc, xbox, playstation
+- przycisk - submit
+
+<form action = "processform" method = "POST">
+    <br>
+    Username: <input type="text" name="username"><br><br>
+    Password: <input type="password" name="password"><br><br>
+    <input type="checkbox" name="accept" value="on"> Accept term and conditions.<br><br>
+    <input type="radio" name="sex" value="male"> male<br>
+    <input type="radio" name="sex" value="female"> female<br><br>
+    <select name="device">
+        <option value="pc">PC</option>
+        <option value="xbox">xBox</option>
+        <option value="playstation">PlayStation</option>
+        <option value="phone">smartphone</option>
+    </select><br><br>
+    <button name="submit">submit</button>
+</form>
+
+</body>
+</html>
