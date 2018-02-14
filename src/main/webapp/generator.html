@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>password generator</title>
+</head>
+<body>
+
+<form action="generator" method="POST">
+    <br>
+    Password Length: <select name="password_length">
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+    </select><br><br>
+    Include symbols: <input type="checkbox" name="include_symbols" value="on"> ( e.g. @#$% )<br><br>
+    Include Numbers: <input type="checkbox" name="include_numbers" value="on"> ( e.g. 123456 )<br><br>
+    Include Lowercase Characters: <input type="checkbox" name="include_lowercase_characters" value="on"> ( e.g. abcdefgh )<br><br>
+    Include Uppercase Characters: <input type="checkbox" name="include_uppercase_characters" value="on"> ( e.g. ABCDEFGH )<br><br>
+    <button name="submit">submit</button>
+</form>
+
+</body>
+</html>
