@@ -19,29 +19,20 @@ public class FormServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        resp.setContentType("text/html");
-        resp.setCharacterEncoding("utf-8");
-        PrintWriter out = resp.getWriter();
-        out.println("Processing form...");
-    }
 
-    private void process(HttpServletRequest req, HttpServletResponse resp, String message) throws IOException {
-        resp.setContentType("text/html");
-        resp.setCharacterEncoding("utf-8");
-        PrintWriter out = resp.getWriter();
-        out.println(message);
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String acceptTerms = req.getParameter("accept");
+        String sex = req.getParameter("sex");
+        String hardware = req.getParameter("device");
 
-        Enumeration<String> parameters = req.getParameterNames();
-
-        out.print("<ul>");
-
-        while (parameters.hasMoreElements()) {
-            String parameter = parameters.nextElement();
-            String value = req.getParameter(parameter);
-            out.println("<li>" + value + "</li>");
+        if (acceptTerms != null && sex != null) {
+            resp.setContentType("text/html");
+            resp.setCharacterEncoding("utf-8");
+            PrintWriter out = resp.getWriter();
+            out.println("<h1>Welcome " + username + "</h1>");
+            out.println("Your sex: " + sex + "<br>Your gaming platform: " + hardware);
         }
-
-        out.println("</ul>");
     }
 
 }
