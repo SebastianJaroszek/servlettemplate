@@ -1,7 +1,5 @@
 package pl.sebastian;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class PasswordGenerator {
@@ -31,13 +29,14 @@ public class PasswordGenerator {
             alphabet = LOWERCASE_CHARACTERS;
         }
 
-        String result = "";
+        StringBuilder result = new StringBuilder();
         Random random = new Random();
+        int alphabetLength = alphabet.length();
         for (int i = 0; i < length; i++) {
-            int item = random.nextInt(alphabet.length());
-            result += alphabet.charAt(item);
+            int item = random.nextInt(alphabetLength);
+            result.append(alphabet.charAt(item));
         }
 
-        return result;
+        return result.toString();
     }
 }
