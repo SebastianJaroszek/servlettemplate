@@ -13,15 +13,18 @@ import static pl.sebastian.PasswordGenerator.generatePassword;
 @WebServlet("/generator")
 public class PasswordGeneratorServlet extends HttpServlet {
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Integer passwordLength = Integer.valueOf(req.getParameter("password_length"));
-        boolean includeSymbols = "on".equals(req.getParameter("include_symbols"));
-        boolean includeNumbers = "on".equals(req.getParameter("include_numbers"));
-        boolean includeLowercase = "on".equals(req.getParameter("include_lowercase_characters"));
-        boolean includeUppercase = "on".equals(req.getParameter("include_uppercase_characters"));
+    private static final String ON = "on";
 
-        String password = generatePassword(passwordLength, includeSymbols, includeNumbers, includeLowercase, includeUppercase);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Integer passwordLength = Integer.valueOf(req.getParameter("password_length"));
+        boolean includeSymbols = ON.equals(req.getParameter("include_symbols"));
+        boolean includeNumbers = ON.equals(req.getParameter("include_numbers"));
+        boolean includeLowercase = ON.equals(req.getParameter("include_lowercase_characters"));
+        boolean includeUppercase = ON.equals(req.getParameter("include_uppercase_characters"));
+
+        String password = generatePassword(passwordLength, includeSymbols, includeNumbers,
+                includeLowercase, includeUppercase);
 
         resp.setContentType("text/html");
         resp.setCharacterEncoding("utf-8");
